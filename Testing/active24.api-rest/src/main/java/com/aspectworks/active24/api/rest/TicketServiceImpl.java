@@ -11,7 +11,7 @@ import java.util.*;
 
 @Service
 public class TicketServiceImpl implements TicketService{
-    static ArrayList<TicketVO> tickets = new ArrayList<>();
+    static List<TicketVO> tickets = new ArrayList<>();
     public void createTicket(TicketVO ticket){
         tickets.add(ticket);
     }

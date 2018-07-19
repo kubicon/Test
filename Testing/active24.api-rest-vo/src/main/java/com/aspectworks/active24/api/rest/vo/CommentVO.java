@@ -1,17 +1,22 @@
 package com.aspectworks.active24.api.rest.vo;
 
 import java.util.Date;
+import javax.persistence.*;
 
+@Entity
 public class CommentVO {
     private String comment;
     private String user;
     private Date date;
+    @Id
+    private int commentID;
 
     @Override
     public String toString() {
         return "CommentVO{" +
                 "comment='" + comment + '\'' +
                 ", date=" + date +
+                ", commentid=" + commentID +
                 '}';
     }
 
@@ -36,5 +41,13 @@ public class CommentVO {
     }
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public int getCommentID() {
+        return commentID;
+    }
+
+    public void setCommentID(int commentID) {
+        this.commentID = commentID;
     }
 }

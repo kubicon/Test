@@ -1,6 +1,7 @@
 package com.aspectworks.active24.api.rest;
 
 import com.aspectworks.active24.api.rest.vo.CommentVO;
+import com.aspectworks.active24.api.rest.vo.TicketEnt;
 import com.aspectworks.active24.api.rest.vo.TicketVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -29,18 +30,21 @@ public class TicketController {
     public void deleteTicket(@PathVariable("ticketid") int ticketID){
         ticketService.deleteTicket(ticketID);
         ticketEntService.deleteTicket(ticketID);
-        System.out.println("Deleting ticket with name: " + ticketID);
     }
     @RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<TicketVO> getAllTickets(@RequestParam(value = "order", defaultValue = "1") int order, @RequestParam(value = "sort", defaultValue = "0") int sort){
-        ticketService.ticketSort(order, sort);
-        System.out.println(ticketService.getTickets());
-        return ticketService.getTickets();
+    public List<TicketEnt> getAllTickets(@RequestParam(value = "order", defaultValue = "0") int order, @RequestParam(value = "sort", defaultValue = "0") int sort, @RequestParam(value = "contains", defaultValue = "") String contains){
+        ticketEntService.ticketSort(order, sort);
+        System.out.println(ticketEntService.getTickets());
+        return ticketEntService.getTickets();
     }
     @RequestMapping(method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, value = "/{ticketid}/comments")
     public void createComment(@RequestBody CommentVO comment, @PathVariable("ticketid") long ticketid){
         ticketEntService.createComment(comment, ticketid);
-    }
+    }/*
+    @RequestMapping(method = RequestMethod.DELETE, value = "/{ticketid}/comments/{commentid}")
+    public void deleteTicket(@PathVariable("ticketid") int ticketid, @PathVariable("commentid") int commentid){
+        ticketEntService.deleteComment(ticketid, commentid);
+    }*/
     @RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE, value = "/{ticketid}/comments")
     public List<CommentVO> getComments(@PathVariable("ticketid") long ticketid){
         return ticketEntService.getComments(ticketid);

@@ -1,22 +1,25 @@
 package com.aspectworks.active24.api.rest.vo;
 
-
+import javax.persistence.*;
+import com.sun.javafx.beans.IDProperty;
 import java.lang.reflect.Array;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
+@Entity
 public class TicketEnt {
     private String theme;
     private Date date;
+    @Id
     private int ticketID;
-    ArrayList<CommentVO> comments = new ArrayList<>();
+
+    @OneToMany(cascade=CascadeType.ALL)
+    List<CommentVO> comments = new ArrayList<>();
+
 
     @Override
     public String toString() {
-        return "TicketVO{" +
+        return "TicketEnt{" +
                 "theme='" + theme + '\'' +
                 ", date=" + date +
                 ", ticketID=" + ticketID +
@@ -47,8 +50,8 @@ public class TicketEnt {
         this.ticketID = ticketID;
     }
 
-    public ArrayList<CommentVO> getComments() {
-        return comments;
+    public List<CommentVO> getComments() {
+        return this.comments;
     }
     public void addComment(CommentVO comment){
         comments.add(comment);
