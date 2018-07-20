@@ -2,7 +2,11 @@ package com.aspectworks.active24.api.rest;
 
 import com.aspectworks.active24.api.rest.vo.UserVO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Lazy;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.http.MediaType;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.web.bind.annotation.*;
 
 import java.awt.*;
@@ -10,13 +14,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
+//@EnableScheduling
+@PropertySource(value={"file:${restapi.config.dir}/restapi.properties"})
 @RequestMapping("/users")
 public class UserController {
+    @Value("${teststring}")
+    private String testString;
     @Autowired
     public UserServiceImpl userService;
     @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public void createUser(@RequestBody UserVO user){
         userService.createUser(user);
+        System.out.println(testString);
         System.out.println("Creating new user: " + user);
     }
 

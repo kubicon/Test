@@ -13,7 +13,7 @@ public class CommentVO {
 
     @Override
     public String toString() {
-        return "CommentVO{" +
+        return
                 "comment='" + comment + '\'' +
                 ", date=" + date +
                 ", commentid=" + commentID +

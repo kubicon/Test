@@ -52,7 +52,7 @@ public class UserVO {
 
     @Override
     public String toString() {
-        return "UserVO{" +
+        return
                 "username='" + username + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", surname='" + surname + '\'' +

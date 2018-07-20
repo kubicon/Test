@@ -21,21 +21,16 @@ public class TicketController {
     public TicketEntServiceImpl ticketEntService;
     @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public void createTicket(@RequestBody TicketVO ticket){
-        ticket.setDate(java.util.Calendar.getInstance().getTime());
-        ticketService.createTicket(ticket);
         ticketEntService.createTicket(ticket);
-        System.out.println("New ticket created: " + ticket);
     }
     @RequestMapping(method = RequestMethod.DELETE, value = "/{ticketid}")
     public void deleteTicket(@PathVariable("ticketid") int ticketID){
-        ticketService.deleteTicket(ticketID);
+        //ticketService.deleteTicket(ticketID);
         ticketEntService.deleteTicket(ticketID);
     }
     @RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public List<TicketEnt> getAllTickets(@RequestParam(value = "order", defaultValue = "0") int order, @RequestParam(value = "sort", defaultValue = "0") int sort, @RequestParam(value = "contains", defaultValue = "") String contains){
-        ticketEntService.ticketSort(order, sort);
-        System.out.println(ticketEntService.getTickets());
-        return ticketEntService.getTickets();
+        return ticketEntService.getTickets(order, sort, contains);
     }
     @RequestMapping(method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, value = "/{ticketid}/comments")
     public void createComment(@RequestBody CommentVO comment, @PathVariable("ticketid") long ticketid){

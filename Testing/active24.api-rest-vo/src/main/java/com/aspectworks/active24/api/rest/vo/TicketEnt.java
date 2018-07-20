@@ -11,7 +11,7 @@ public class TicketEnt {
     private String theme;
     private Date date;
     @Id
-    private int ticketID;
+    private long ticketID;
 
     @OneToMany(cascade=CascadeType.ALL)
     List<CommentVO> comments = new ArrayList<>();
@@ -19,7 +19,7 @@ public class TicketEnt {
 
     @Override
     public String toString() {
-        return "TicketEnt{" +
+        return
                 "theme='" + theme + '\'' +
                 ", date=" + date +
                 ", ticketID=" + ticketID +
@@ -42,11 +42,11 @@ public class TicketEnt {
         this.date = date;
     }
 
-    public int getTicketID() {
+    public long getTicketID() {
         return ticketID;
     }
 
-    public void setTicketID(int ticketID) {
+    public void setTicketID(long ticketID) {
         this.ticketID = ticketID;
     }
 
