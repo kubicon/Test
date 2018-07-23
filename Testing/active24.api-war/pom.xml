@@ -26,6 +26,18 @@
                     </jvmArguments>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>com.github.kongchen</groupId>
+                <artifactId>swagger-maven-plugin</artifactId>
+                <version>3.1.7</version>
+                <configuration>
+                    <apiSources>
+                        <apiSource>
+                            ...
+                        </apiSource>
+                    </apiSources>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
@@ -53,6 +65,11 @@
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
 		</dependency>
+        <dependency>
+            <groupId>commons-configuration</groupId>
+            <artifactId>commons-configuration</artifactId>
+            <version>1.10</version>
+        </dependency>
 		<!--Others END-->
     </dependencies>
 

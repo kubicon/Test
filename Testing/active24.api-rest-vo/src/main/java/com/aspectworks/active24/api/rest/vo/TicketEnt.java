@@ -4,7 +4,9 @@ import javax.persistence.*;
 import com.sun.javafx.beans.IDProperty;
 import java.lang.reflect.Array;
 import java.time.LocalDateTime;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 @Entity
 public class TicketEnt {

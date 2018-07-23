@@ -14,6 +14,6 @@ public class Application {
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
         //System.setProperty(ContextInitializer.CONFIG_FILE_PROPERTY, "${restapi.config.dir}/logback.xml");
-       // Server server = Server.createTcpServer(args).start();
+        //Server server = Server.createTcpServer(args).start();
     }
 }
